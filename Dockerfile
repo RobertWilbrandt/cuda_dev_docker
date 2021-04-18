@@ -14,6 +14,12 @@ RUN mkdir system \
 
 ENV PATH="/system/cmake-3.10.0-Linux-x86_64/bin:${PATH}"
 
+# Set up networking and ssh server for remote profiling
+RUN apt install -y iproute2 openssh-server \
+  && sed -i "s/.*PermitRootLogin.*/PermitRootLogin yes/g" /etc/ssh/sshd_config \
+  && mkdir /var/run/sshd \
+  && echo 'root:root' | chpasswd
+
 # Use --volume to map cuda application here
 ENV CUDA_APP_DIR=/cuda_app
 

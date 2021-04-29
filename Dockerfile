@@ -9,10 +9,10 @@ RUN apt update \
 # Install cmake
 RUN mkdir system \
   && cd system \
-  && wget https://cmake.org/files/v3.10/cmake-3.10.0-Linux-x86_64.tar.gz \
-  && tar xf cmake-3.10.0-Linux-x86_64.tar.gz
+  && wget https://cmake.org/files/v3.17/cmake-3.17.0-Linux-x86_64.tar.gz \
+  && tar xf cmake-3.17.0-Linux-x86_64.tar.gz
 
-ENV PATH="/system/cmake-3.10.0-Linux-x86_64/bin:${PATH}"
+ENV PATH="/system/cmake-3.17.0-Linux-x86_64/bin:${PATH}"
 
 # Set up networking and ssh server for remote profiling
 RUN apt install -y iproute2 openssh-server \
